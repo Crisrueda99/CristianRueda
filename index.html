@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV de Cristian Rueda - Analista de Infraestructura IT y Soporte Técnico con experiencia en QA Engineering">
+    <meta name="keywords" content="IT, Infraestructura, QA, Soporte Técnico, Cristian Rueda, Puerto Rico">
+    <meta name="author" content="Cristian Rueda">
+    <meta property="og:title" content="CV - Cristian Rueda | Analista IT">
+    <meta property="og:description" content="Técnico en Infraestructura IT y QA Engineering residente en Puerto Rico, Meta">
+    <meta property="og:type" content="website">
+    <title>CV - Cristian Rueda | Analista IT & Soporte Técnico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar Fija -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container">
+            <div class="nav-logo">CR</div>
+            <ul class="nav-menu">
+                <li><a href="#profile" class="nav-link">Perfil</a></li>
+                <li><a href="#experience" class="nav-link">Experiencia</a></li>
+                <li><a href="#education" class="nav-link">Formación</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+                <li><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">🌙</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header role="banner">
+        <h1>Cristian Alejandro Rueda</h1>
+        <p>Analista de Infraestructura IT & Soporte Técnico</p>
+        <div class="location">📍 Residente en Puerto Rico, Meta</div>
+        <div class="contact-info">
+            <a href="tel:+573188612130">📱 318 861 2130</a> | 
+            <a href="mailto:Crisrueda99@gmail.com">📧 Crisrueda99@gmail.com</a>
+        </div>
+        
+        <!-- Redes Sociales -->
+        <div class="social-links">
+            <a href="https://linkedin.com/in/cristian-rueda" target="_blank" rel="noopener noreferrer" class="social-btn">LinkedIn</a>
+            <a href="https://github.com/Crisrueda99" target="_blank" rel="noopener noreferrer" class="social-btn">GitHub</a>
+            <a href="#" class="social-btn download-btn" id="downloadCV">📥 Descargar CV</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Perfil Profesional -->
+        <section id="profile">
+            <h2>Perfil Profesional</h2>
+            <p>
+                Técnico residente en Puerto Rico (Meta) con formación especializada en <strong>Sistemas y Calidad de Software (QA)</strong>. 
+                Combino experiencia práctica en diagnóstico de sistemas complejos (adquirida en RYLSA) con habilidades de soporte IT e infraestructura de redes. 
+                Actualmente perfecciono mis competencias tecnológicas en Tripleten (QA Engineering). Soy un profesional analítico, disciplinado y listo para garantizar la continuidad operativa en AgroWeb.
+            </p>
+        </section>
+
+        <!-- Experiencia Relevante -->
+        <section id="experience">
+            <h2>Experiencia Relevante</h2>
+            
+            <article class="job">
+                <div class="job-header">
+                    <h3>Técnico de Diagnóstico | RYLSA</h3>
+                    <span class="date">Sep 2021 – Dic 2024</span>
+                </div>
+                <ul>
+                    <li>Diagnóstico avanzado de sistemas electrónicos y mecánicos usando software especializado.</li>
+                    <li>Documentación técnica detallada y reporte de incidencias (trazabilidad de fallas).</li>
+                    <li>Trabajo bajo presión enfocado en la resolución rápida de problemas operativos.</li>
+                </ul>
+            </article>
+
+            <article class="job">
+                <div class="job-header">
+                    <h3>Técnico de Soporte IT | COMPUTEC</h3>
+                    <span class="date">Mar 2016 – Nov 2017</span>
+                </div>
+                <ul>
+                    <li>Mantenimiento correctivo y preventivo de hardware (PCs y Portátiles).</li>
+                    <li>Configuración de redes locales (LAN/WiFi) y conectividad.</li>
+                    <li>Soporte a usuario final en sistemas Windows y herramientas de oficina.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Formación y Certificaciones -->
+        <section id="education">
+            <h2>Formación y Certificaciones</h2>
+            
+            <article class="job">
+                <strong>QA Engineering Bootcamp</strong> — Tripleten (En curso, 2025)
+                <small>Diseño de pruebas, reporte de bugs, SQL y metodologías ágiles.</small>
+            </article>
+
+            <article class="job">
+                <strong>Bachiller Técnico en Mantenimiento de Equipos de Cómputo</strong>
+                <small>I.E. Alicio Amador Elvira (2017)</small>
+            </article>
+            
+            <h3>Certificaciones Técnicas (SENA)</h3>
+            <div class="skills-container">
+                <span class="tag">Programación C++</span>
+                <span class="tag">Desarrollo Web (PHP/HTML)</span>
+                <span class="tag">Controladores Lógicos (PLC)</span>
+                <span class="tag">Inglés (Nivel 3)</span>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto -->
+        <section id="contact" class="contact-section">
+            <h2>Ponte en Contacto</h2>
+            <form id="contactForm" class="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Nombre *</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Asunto *</label>
+                    <input type="text" id="subject" name="subject" required placeholder="Asunto del mensaje">
+                    <span class="error-message" id="subjectError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje *</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Tu mensaje aquí..."></textarea>
+                    <span class="error-message" id="messageError"></span>
+                </div>
+
+                <button type="submit" class="btn">Enviar Mensaje</button>
+                <span class="form-status" id="formStatus"></span>
+            </form>
+        </section>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+            <h3>¿Listo para optimizar la infraestructura IT?</h3>
+            <p>Cuento con la ubicación, la formación técnica y la actitud analítica que AgroWeb necesita.</p>
+            <a href="mailto:Crisrueda99@gmail.com" class="btn">Contactar a Cristian</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>&copy; 2026 Cristian Rueda. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
