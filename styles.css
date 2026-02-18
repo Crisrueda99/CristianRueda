@@ -500,6 +500,20 @@ footer {
     margin-top: 3rem;
 }
 
+/* Link de descarga de CV con flecha */
+footer .download-cv {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+footer .download-cv:hover {
+    color: var(--secondary);
+}
+
 /* Animations */
 @keyframes slideDown {
     from {
