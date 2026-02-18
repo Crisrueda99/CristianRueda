@@ -284,16 +284,11 @@ function initializeDownloadCV() {
 
     downloadBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        // En producción, aquí irías a descargar un PDF real
-        console.log('📥 Iniciando descarga del CV');
-        
-        // Simular descarga del CV
-        const message = 'Para descargar el CV, por favor contacta por email a Crisrueda99@gmail.com';
-        alert(message);
-        
-        // Alternativa: Print to PDF
-        // window.print();
+        console.log('📥 Preparando la página para descarga en PDF');
+
+        // Abrir diálogo de impresión; el CSS se encarga de generar un PDF
+        // tamaño oficio (legal) y conservar colores de fondo.
+        window.print();
     });
 }
 

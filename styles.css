@@ -508,6 +508,11 @@ footer .download-cv {
     text-decoration: none;
     color: var(--primary);
     transition: color 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
 }
 
 footer .download-cv:hover {
@@ -674,7 +679,13 @@ article:nth-of-type(3) {
 }
 
 /* Print Styles */
+@page { size: legal portrait; margin: 1cm; }
 @media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
     .navbar,
     .theme-toggle,
     .social-links,
