@@ -73,16 +73,26 @@ body {
 }
 
 .nav-avatar {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid white;
     transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 
 .nav-avatar:hover {
+    /* slight magnification on hover */
     transform: scale(1.1);
+}
+
+.nav-avatar.expanded {
+    /* enlarge without affecting layout */
+    transform: scale(3);
+    z-index: 1000;
 }
 
 .nav-menu {

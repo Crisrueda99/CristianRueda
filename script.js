@@ -8,9 +8,31 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothNavigation();
     initializeSkillsTags();
     initializeDownloadCV();
+    initializeAvatarToggle();
 
     console.log('✅ Todas las funcionalidades se han inicializado correctamente');
 });
+
+/**
+ * Muestra/oculta avatar expandido al click y colapsa al clicar fuera
+ */
+function initializeAvatarToggle() {
+    const avatar = document.querySelector('.nav-avatar');
+    if (!avatar) return;
+
+    avatar.addEventListener('click', function(e) {
+        e.stopPropagation(); // evitar burbujeo hacia document
+        avatar.classList.toggle('expanded');
+    });
+
+    // si se hace clic en cualquier otro lugar, quitar la clase
+    document.addEventListener('click', function() {
+        if (avatar.classList.contains('expanded')) {
+            avatar.classList.remove('expanded');
+        }
+    });
+}
+
 
 /**
  * Inicializa el toggleador de tema oscuro/claro
