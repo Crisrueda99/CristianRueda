@@ -736,6 +736,26 @@ a:focus {
     outline-offset: 2px;
 }
 
+/* Dynamic print-friendly overrides (added/removed by JS before/after print) */
+.print-friendly {
+    background: white !important;
+    color: black !important;
+}
+
+.print-friendly * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+}
+
+/* avatar adjustment for print */
+.print-friendly .nav-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    filter: none !important;
+    border-color: black !important;
+}
+
 button:focus {
     outline: 2px solid white;
     outline-offset: 2px;

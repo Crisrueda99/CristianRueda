@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSkillsTags();
     initializeDownloadCV();
     initializeAvatarToggle();
+    setupPrintAdjustments();
 
     console.log('✅ Todas las funcionalidades se han inicializado correctamente');
 });
@@ -285,11 +286,24 @@ function initializeDownloadCV() {
     downloadBtn.addEventListener('click', function(e) {
         e.preventDefault();
         console.log('📥 Preparando la página para descarga en PDF');
-
-        // Abrir diálogo de impresión; el CSS se encarga de generar un PDF
-        // tamaño oficio (legal) y conservar colores de fondo.
         window.print();
     });
+}
+
+/**
+ * Ajustes temporales antes/después de imprimir para forzar fondo blanco,
+ * texto negro y adaptar el avatar. Se realiza únicamente con JS, tal como
+ * solicitó el usuario.
+ */
+function setupPrintAdjustments() {
+    function applyPrintStyles() {
+        document.body.classList.add('print-friendly');
+    }
+    function removePrintStyles() {
+        document.body.classList.remove('print-friendly');
+    }
+    window.addEventListener('beforeprint', applyPrintStyles);
+    window.addEventListener('afterprint', removePrintStyles);
 }
 
 /**
