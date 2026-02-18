@@ -286,7 +286,50 @@ function initializeDownloadCV() {
     downloadBtn.addEventListener('click', function(e) {
         e.preventDefault();
         console.log('📥 Preparando la página para descarga en PDF');
-        window.print();
+        
+        // Elemento a convertir
+        const element = document.documentElement;
+        const originalTheme = document.body.classList.contains('dark-mode');
+        
+        // Aplicar tema claro temporalmente para mejor visualización en PDF
+        if (originalTheme) {
+            document.body.classList.remove('dark-mode');
+        }
+        
+        // Configuración de html2pdf
+        const options = {
+            margin: 10,
+            filename: 'CV_Cristian_Rueda.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 2, 
+                backgroundColor: '#ffffff',
+                useCORS: true,
+                allowTaint: true,
+                logging: false,
+                imageTimeout: 5000
+            },
+            jsPDF: { 
+                orientation: 'portrait', 
+                unit: 'mm', 
+                format: 'a4',
+                compress: false  // Desactiva compresión para aumentar peso
+            }
+        };
+        
+        // Generar PDF
+        html2pdf().set(options).from(element).save().then(() => {
+            // Restaurar tema original si estaba en dark-mode
+            if (originalTheme) {
+                document.body.classList.add('dark-mode');
+            }
+            console.log('✅ PDF descargado exitosamente');
+        }).catch((error) => {
+            console.error('❌ Error al generar PDF:', error);
+            if (originalTheme) {
+                document.body.classList.add('dark-mode');
+            }
+        });
     });
 }
 
