@@ -120,35 +120,41 @@ body:not(.dark-mode) .navbar {
 .nav-logo {
     display: flex;
     align-items: center;
+    position: relative;
+    width: 128px;
+    height: 100%;
 }
 
 .nav-avatar {
-    width: 128px;
-    height: 128px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2.5px solid var(--primary-light);
+    border: 3.5px solid var(--surface);
+    background: var(--surface);
     transition: transform var(--transition), box-shadow var(--transition);
     cursor: pointer;
 }
 
-/* Avatar permanentemente más grande */
+/* Avatar tipo "insignia" (badge) permanentemente más grande, flotando sobre la navbar */
 .nav-avatar--lg {
+    position: absolute;
+    top: 12px;
+    /* Se apoya en la navbar pero cuelga hacia abajo */
+    left: 0;
     width: 128px;
     height: 128px;
-    border: 3px solid var(--primary-light);
-    box-shadow: 0 0 0 4px rgba(129, 140, 248, .18);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1050;
+    transform-origin: center top;
 }
 
 .nav-avatar:hover {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 6px rgba(79, 70, 229, .2);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.35);
 }
 
 .nav-avatar.expanded {
-    transform: scale(1.5);
-    z-index: 1000;
-    position: relative;
+    transform: scale(1.6);
+    z-index: 2000;
 }
 
 .nav-menu {
