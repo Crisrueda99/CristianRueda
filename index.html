@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="CV de Cristian Rueda - Analista de Infraestructura IT y Soporte Técnico con experiencia en QA Engineering">
+    <meta name="keywords" content="IT, Infraestructura, QA, Soporte Técnico, Cristian Rueda, Puerto Rico">
+    <meta name="author" content="Cristian Rueda">
+    <meta property="og:title" content="CV - Cristian Rueda | Analista IT">
+    <meta property="og:description"
+        content="Técnico en Infraestructura IT y QA Engineering residente en Puerto Rico, Meta">
+    <meta property="og:type" content="website">
+    <title>CV - Cristian Rueda | Analista IT & Soporte Técnico</title>
+    <!-- ⚡ Auto-Theme Animado & Persistencia de modo oscuro -->
+    <script>
+        (function () {
+            // ==========================================
+            // ⚙️ CONFIGURACIÓN DE VELOCIDAD DE COLOR
+            // ==========================================
+            // Aumenta este número para que los colores cambien más rápido.
+            // Disminuye este número para que cambien más lento.
+            // Ejemplos: 
+            // 0.05 = muy lento y sutil
+            // 0.1  = normal (velocidad actual)
+            // 0.5  = intermedio
+            // 1.0  = modo fiesta (muy rápido)
+            var VELOCIDAD = 0.8;
+            // ==========================================
+
+            // -- 1. Generar color animado continuamente --
+            var h = Math.floor(Math.random() * 360), s = 75, l = 45;
+            var root = document.documentElement;
+
+            function hslToHex(bh, bs, bl) {
+                bs /= 100; bl /= 100;
+                var a = bs * Math.min(bl, 1 - bl), f = function (n) {
+                    var k = (n + bh / 30) % 12, c = bl - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+                    return Math.round(255 * c).toString(16).padStart(2, '0');
+                };
+                return '#' + f(0) + f(8) + f(4);
+            }
+            function clamp(v, a, b) { return Math.min(Math.max(v, a), b); }
+
+            function animateTheme() {
+                // Incrementar hue basándose en la velocidad configurada arriba
+                h = (h + VELOCIDAD) % 360;
+
+                var p = hslToHex(h, clamp(s, 55, 90), clamp(l, 35, 55));
+                var pl = hslToHex(h, clamp(s - 15, 40, 80), clamp(l + 28, 60, 80));
+                var pd = hslToHex(h, clamp(s + 5, 60, 95), clamp(l - 18, 18, 42));
+                var ah = (h + 165) % 360;
+                var ac = hslToHex(ah, clamp(s, 55, 85), clamp(l, 35, 50));
+                var al = hslToHex(ah, clamp(s - 10, 45, 80), clamp(l + 25, 58, 78));
+
+                root.style.setProperty('--primary', p);
+                root.style.setProperty('--primary-light', pl);
+                root.style.setProperty('--primary-dark', pd);
+                root.style.setProperty('--accent', ac);
+                root.style.setProperty('--accent-light', al);
+
+                requestAnimationFrame(animateTheme);
+            }
+            // Iniciar la animación
+            requestAnimationFrame(animateTheme);
+
+            // -- 2. Aplicar modo oscuro si está guardado o es preferido --
+            var savedTheme = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                // Como document.body aún no existe, marcamos una propiedad global 
+                // para aplicarla inmediatamente después
+                window.__themeDark = true;
+            }
+        })();
+    </script>
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for social icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- PDF Generation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="./styles.css?v=3.0">
+</head>
+
+<body>
+    <!-- Navbar Fija -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="https://github.com/Crisrueda99" target="_blank" rel="noopener noreferrer">
+                    <img src="https://github.com/Crisrueda99.png" alt="Avatar de Cristian Rueda"
+                        class="nav-avatar nav-avatar--lg">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#profile" class="nav-link">Perfil</a></li>
+                <li><a href="#experience" class="nav-link">Experiencia</a></li>
+                <li><a href="#education" class="nav-link">Formación</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+                <li><button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema"
+                        title="Alternar modo diurno/nocturno">🌙</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header role="banner">
+        <h1>Cristian Alejandro Rueda Rodriguez</h1>
+        <p>Analista de Infraestructura IT & Soporte Técnico</p>
+        <div class="location">📍 Puerto Rico, Meta</div>
+        <div class="contact-info">
+            <a href="tel:+573188612130">📱 318 861 2130</a> |
+            <a href="mailto:Crisrueda99@gmail.com">📧 Crisrueda99@gmail.com</a>
+        </div>
+
+
+    </header>
+
+    <div class="container">
+        <!-- Perfil Profesional -->
+        <section id="profile">
+            <h2>Perfil Profesional</h2>
+            <p>
+                Analista de Infraestructura y Aplicaciones IT en formación continua, con una sólida base técnica en
+                mantenimiento de hardware y diagnóstico de sistemas de alta complejidad. Mi perfil profesional integra
+                la metodología del Aseguramiento de Calidad (QA Engineering) que actualmente curso en Tripleten, lo que
+                me permite abordar la resolución de problemas técnicos con una mentalidad analítica, estructurada y
+                orientada al detalle.
+                <br><br>
+                Cuento con una trayectoria diversa que abarca desde el soporte técnico independiente en Computec,
+                gestionando redes y equipos de cómputo, hasta el mantenimiento especializado en entornos industriales en
+                RYLSA. Poseo competencias técnicas certificadas por el SENA en lógica de programación (C++),
+                automatización (PLC) y desarrollo web (HTML, PHP), lo que me facilita la comprensión profunda de las
+                aplicaciones de software y su interacción con la infraestructura física.
+                <br><br>
+                Mi experiencia en diagnóstico electrónico y mecánico me ha dotado de una capacidad excepcional para la
+                detección de causas raíz, la elaboración de informes técnicos detallados y la gestión eficiente de
+                incidencias bajo presión. Como residente de Puerto Rico, Meta, ofrezco un conocimiento profundo del
+                entorno local y disponibilidad inmediata para garantizar la continuidad operativa tecnológica de las
+                aplicaciones y la infraestructura, asegurando que los estándares de calidad y eficiencia se cumplan en
+                cada proceso.
+            </p>
+        </section>
+
+        <!-- Experiencia Relevante -->
+        <section id="experience">
+            <h2>Experiencia Relevante</h2>
+
+            <article class="job">
+                <div class="job-header">
+                    <h3>Técnico de Diagnóstico | RYLSA</h3>
+                    <span class="date">Sep 2021 – Dic 2024</span>
+                </div>
+                <ul>
+                    <li>Diagnóstico avanzado de sistemas electrónicos y mecánicos usando software especializado.</li>
+                    <li>Documentación técnica detallada y reporte de incidencias (trazabilidad de fallas).</li>
+                    <li>Trabajo bajo presión enfocado en la resolución rápida de problemas operativos.</li>
+                </ul>
+            </article>
+
+            <article class="job">
+                <div class="job-header">
+                    <h3>Técnico de Soporte IT | COMPUTEC</h3>
+                    <span class="date">Mar 2016 – Nov 2017</span>
+                </div>
+                <ul>
+                    <li>Mantenimiento correctivo y preventivo de hardware (PCs y Portátiles).</li>
+                    <li>Configuración de redes locales (LAN/WiFi) y conectividad.</li>
+                    <li>Soporte a usuario final en sistemas Windows y herramientas de oficina.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Formación y Certificaciones -->
+        <section id="education">
+            <h2>Formación y Certificaciones</h2>
+
+            <article class="job">
+                <strong>QA Engineering Bootcamp</strong> — Tripleten (En curso, 2025)
+                <small>Diseño de pruebas, reporte de bugs, SQL y metodologías ágiles.</small>
+            </article>
+
+            <article class="job">
+                <strong>Bachiller Técnico en Mantenimiento de Equipos de Cómputo</strong>
+                <small>I.E. Alicio Amador Elvira (2017)</small>
+            </article>
+
+            <h3>Certificaciones Técnicas (SENA)</h3>
+            <div class="skills-container">
+                <span class="tag">Programación C++</span>
+                <span class="tag">Desarrollo Web (PHP/HTML)</span>
+                <span class="tag">Controladores Lógicos (PLC)</span>
+                <span class="tag">Inglés (Nivel 3)</span>
+            </div>
+        </section>
+
+
+
+        <!-- Contacto & CTA Box -->
+        <section id="contact" style="display:none;" aria-hidden="true"></section>
+        <!-- CTA Box -->
+        <div class="cta-box">
+            <h3>Propuesta de Valor</h3>
+            <p>
+                Cuento con la ubicación estratégica en Puerto Rico (Meta), la formación técnica multidisciplinaria y la
+                actitud analítica necesaria para integrarme de manera efectiva al equipo de trabajo y asegurar la
+                estabilidad de su infraestructura IT.
+            </p>
+            <a href="mailto:Crisrueda99@gmail.com" class="btn">Contactame</a>
+            <!-- Redes sociales adicionales bajo el CTA -->
+            <div class="social-links">
+                <ul class="social-list">
+                    <li><a href="https://wa.me/573188612130" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+                    </li>
+                    <li><a href="https://instagram.com/crisrueda99" target="_blank" rel="noopener noreferrer">📸
+                            Instagram</a></li>
+                    <li><a href="https://facebook.com/crisrueda99" target="_blank" rel="noopener noreferrer">📘
+                            Facebook</a></li>
+                    <li><a href="https://tiktok.com/@crisrueda99" target="_blank" rel="noopener noreferrer">🎵
+                            TikTok</a></li>
+                    <li><a href="https://twitter.com/crisrueda99" target="_blank" rel="noopener noreferrer">🐦
+                            Twitter/X</a></li>
+                    <li><a href="https://www.linkedin.com/in/crisrueda99" target="_blank" rel="noopener noreferrer">🔗
+                            LinkedIn</a></li>
+                    <li><a href="https://pinterest.com/crisrueda99" target="_blank" rel="noopener noreferrer">📌
+                            Pinterest</a></li>
+
+                    <li><a href="https://threads.net/@crisrueda99" target="_blank" rel="noopener noreferrer">✳️
+                            Threads</a></li>
+                    <li><a href="https://github.com/Crisrueda99" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <p>&copy; 2026 Cristian Rueda. Todos los derechos reservados.</p>
+        <!-- Enlace para descargar hoja de vida con flecha hacia abajo centrada -->
+        <button id="downloadCV" class="download-cv" aria-label="Descargar hoja de vida">
+            ⬇️ Descargar mi hoja de vida
+        </button>
+    </footer>
+
+    <script src="./script.js?v=3.0"></script>
+</body>
+
+</html>
