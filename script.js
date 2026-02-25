@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Inicializar funcionalidades
     initializeThemeToggle();
     initializeFormValidation();
@@ -21,13 +21,13 @@ function initializeAvatarToggle() {
     const avatar = document.querySelector('.nav-avatar');
     if (!avatar) return;
 
-    avatar.addEventListener('click', function(e) {
+    avatar.addEventListener('click', function (e) {
         e.stopPropagation(); // evitar burbujeo hacia document
         avatar.classList.toggle('expanded');
     });
 
     // si se hace clic en cualquier otro lugar, quitar la clase
-    document.addEventListener('click', function() {
+    document.addEventListener('click', function () {
         if (avatar.classList.contains('expanded')) {
             avatar.classList.remove('expanded');
         }
@@ -36,34 +36,32 @@ function initializeAvatarToggle() {
 
 
 /**
- * Inicializa el toggleador de tema oscuro/claro
+ * ── TOGGLE DE TEMA OSCURO / CLARO ─────────────────────────
+ * Recupera el modo oscuro / claro y permite la alternancia
+ * ─────────────────────────────────────────────────────────
  */
 function initializeThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement;
-    
-    // Verificar preferencia guardada o del sistema
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme) {
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeToggle.textContent = '☀️';
-        }
-    } else if (prefersDark) {
+    if (!themeToggle) return;
+
+    // El script en el <head> marca window.__themeDark si debe ir oscuro
+    if (window.__themeDark) {
         document.body.classList.add('dark-mode');
         themeToggle.textContent = '☀️';
+    } else {
+        themeToggle.textContent = '🌙';
     }
-    
+
     // Evento del botón
-    themeToggle.addEventListener('click', function() {
+    themeToggle.addEventListener('click', function () {
         document.body.classList.toggle('dark-mode');
         const isDark = document.body.classList.contains('dark-mode');
         themeToggle.textContent = isDark ? '☀️' : '🌙';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 }
+
+
 
 /**
  * Inicializa la validación del formulario
@@ -76,7 +74,7 @@ function initializeFormValidation() {
 
     inputs.forEach(input => {
         input.addEventListener('blur', validateField);
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             if (this.classList.contains('error')) {
                 validateField.call(this);
             }
@@ -137,7 +135,7 @@ function initializeFormSubmission() {
     const form = document.getElementById('contactForm');
     if (!form) return;
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
         // Validar todos los campos
@@ -174,7 +172,7 @@ function initializeFormSubmission() {
             window.location.href = mailtoLink;
 
             showFormStatus('¡Gracias por tu mensaje! Se ha abierto tu cliente de correo.', 'success');
-            
+
             // Resetear formulario
             form.reset();
             submitBtn.disabled = false;
@@ -204,7 +202,7 @@ function showFormStatus(message, type) {
  */
 function initializeSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href !== '#' && document.querySelector(href)) {
                 e.preventDefault();
@@ -225,10 +223,10 @@ function initializeSmoothScroll() {
  * Efectos al hacer scroll
  */
 function initializeScrollEffects() {
-    window.addEventListener('scroll', debounce(function() {
+    window.addEventListener('scroll', debounce(function () {
         const header = document.querySelector('header');
         const navbar = document.querySelector('.navbar');
-        
+
         if (window.scrollY > 100) {
             navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
         } else {
@@ -242,9 +240,9 @@ function initializeScrollEffects() {
  */
 function initializeSmoothNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             navLinks.forEach(l => l.style.opacity = '1');
             this.style.opacity = '0.6';
         });
@@ -256,18 +254,18 @@ function initializeSmoothNavigation() {
  */
 function initializeSkillsTags() {
     const tags = document.querySelectorAll('.tag');
-    
+
     tags.forEach(tag => {
-        tag.addEventListener('click', function(e) {
+        tag.addEventListener('click', function (e) {
             e.preventDefault();
             this.classList.toggle('active');
-            
+
             // Feedback visual
             const label = this.textContent.trim();
             console.log(`Habilidad: ${label}`);
         });
 
-        tag.addEventListener('keypress', function(e) {
+        tag.addEventListener('keypress', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 this.click();
@@ -283,40 +281,40 @@ function initializeDownloadCV() {
     const downloadBtn = document.getElementById('downloadCV');
     if (!downloadBtn) return;
 
-    downloadBtn.addEventListener('click', function(e) {
+    downloadBtn.addEventListener('click', function (e) {
         e.preventDefault();
         console.log('📥 Preparando la página para descarga en PDF');
-        
+
         // Elemento a convertir
         const element = document.documentElement;
         const originalTheme = document.body.classList.contains('dark-mode');
-        
+
         // Aplicar tema claro temporalmente para mejor visualización en PDF
         if (originalTheme) {
             document.body.classList.remove('dark-mode');
         }
-        
+
         // Configuración de html2pdf
         const options = {
             margin: 10,
             filename: 'CV_Cristian_Rueda.pdf',
             image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { 
-                scale: 2, 
+            html2canvas: {
+                scale: 2,
                 backgroundColor: '#ffffff',
                 useCORS: true,
                 allowTaint: true,
                 logging: false,
                 imageTimeout: 5000
             },
-            jsPDF: { 
-                orientation: 'portrait', 
-                unit: 'mm', 
+            jsPDF: {
+                orientation: 'portrait',
+                unit: 'mm',
                 format: 'a4',
                 compress: false  // Desactiva compresión para aumentar peso
             }
         };
-        
+
         // Generar PDF
         html2pdf().set(options).from(element).save().then(() => {
             // Restaurar tema original si estaba en dark-mode
@@ -354,7 +352,7 @@ function setupPrintAdjustments() {
  */
 function debounce(func, delay) {
     let timeoutId;
-    return function(...args) {
+    return function (...args) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => func.apply(this, args), delay);
     };
@@ -363,7 +361,7 @@ function debounce(func, delay) {
 /**
  * Exportar funciones globales si es necesario
  */
-window.copyToClipboard = function(text) {
+window.copyToClipboard = function (text) {
     navigator.clipboard.writeText(text).then(() => {
         alert('¡Copiado al portapapeles!');
     }).catch(() => {
@@ -371,14 +369,6 @@ window.copyToClipboard = function(text) {
     });
 };
 
-/**
- * Detectar cambios de tema del sistema
- */
-window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
-    if (e.matches && !localStorage.getItem('theme')) {
-        document.body.classList.add('dark-mode');
-        document.getElementById('themeToggle').textContent = '☀️';
-    }
-});
+
 
 console.log('📜 Script cargado y listo');
